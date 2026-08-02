@@ -1,0 +1,11 @@
+# Arquivo com a chave secreta da API
+.env
+
+# Ambiente virtual do Python (não precisa subir pro GitHub)
+venv/
+__pycache__/
+*.pyc
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db

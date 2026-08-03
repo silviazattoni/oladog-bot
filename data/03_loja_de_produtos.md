@@ -79,11 +79,11 @@
 
 ---
 
-### 💊 Farmácia Pet e Cuidados
-- **Vermífugos (Drontal / Endogard):**
-  - Cães Pequenos/Médios (até 10kg): R$ 35,00 (caixa com 2 comprimidos)
-  - Cães Grandes (acima de 10kg): R$ 55,00 (caixa com 2 comprimidos)
-  - *Observação:* A venda é feita como produto da loja. Recomendamos sempre consultar o médico veterinário para a dosagem correta do seu pet!
+  ## 💊 Farmácia Pet e Cuidados
+
+- **Vermífugos (Marcas disponíveis: Drontal e Endogard):**
+  - Para cães de porte pequeno/médio (até 10kg): R$ 35,00 (caixa com 2 comprimidos).
+  - Para cães de porte grande (acima de 10kg): R$ 55,00 (caixa com 2 comprimidos).
 
   ---
 

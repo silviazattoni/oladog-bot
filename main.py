@@ -42,13 +42,6 @@ def carregar_base_de_conhecimento():
 
 system_instruction_toddy, conhecimento_completo = carregar_base_de_conhecimento()
 
-"""
-REGRA ABSOLUTA DE RESPOSTA (SEM ALUCINAÇÕES):
-- Você só tem permissão para responder usando as informações EXATAS contidas nos arquivos da pasta data.
-- NUNCA invente marcas, dosagens (mg), princípios ativos (ex: Fenbendazol, Ivermectina) ou preços que não estejam explicitamente escritos nos manuais.
-- Se o arquivo '03_loja_de_produtos.md' diz apenas: 'Drontal e Endogard', cite APENAS Drontal e Endogard com os valores R$ 35,00 e R$ 55,00.
-"""
-
 # 4. BARRA LATERAL (SIDEBAR) - UX & Informações do Petshop
 with st.sidebar:
     st.title("🐶 OláDog!")

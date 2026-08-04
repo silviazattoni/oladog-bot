@@ -92,8 +92,8 @@ No final da sua resposta, adicione sempre uma seção curta de fontes no seguint
 # System prompt inicial com a base de conhecimento
     mensagens_api = [{"role": "system", "content": system_prompt_ajustado}]
 
-    # Pega apenas as últimas 6 mensagens do histórico para não estourar os limites da API
-    for msg in historico_mensagens[-6:]:
+    # Pega apenas as últimas 2 mensagens para não estourar o limite de tokens da Groq
+    for msg in historico_mensagens[-2:]:
         mensagens_api.append({
             "role": msg["role"],
             "content": msg["content"]
@@ -102,7 +102,7 @@ No final da sua resposta, adicione sempre uma seção curta de fontes no seguint
     # Chamada para a API
     chat_completion = client_groq.chat.completions.create(
         messages=mensagens_api,
-        model="llama-3.1-8b-instant",
+        model="llama3-8b-8192",  # modelo com janela de contexto maior
         temperature=0.3
     )
     

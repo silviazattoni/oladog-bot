@@ -102,7 +102,7 @@ No final da sua resposta, adicione sempre uma seção curta de fontes no seguint
     # Chamada para a API
     chat_completion = client_groq.chat.completions.create(
         messages=mensagens_api,
-        model="llama3-8b-8192",  # modelo com janela de contexto maior
+        model="llama-3.3-70b-versatile",  # Modelo atualizado e oficial
         temperature=0.3
     )
     

@@ -83,15 +83,16 @@ CITAGEM DE FONTES (MUITO IMPORTANTE):
 No final da sua resposta, adicione sempre uma seção curta de fontes no seguinte formato (usando os nomes exatos dos arquivos consultados no contexto):
 
 ---
-*Fonte(s): [Nome do Arquivo .md]*
+**Fonte(s):** [Nome do Arquivo .md]
 
 === BASE DE CONHECIMENTO COMPLETA OLADOG! ===
 {conhecimento_completo}
 """
 
+# System prompt inicial com a base de conhecimento
     mensagens_api = [{"role": "system", "content": system_prompt_ajustado}]
-    
-    # Pega apenas as últimas 6 mensagens para enviar à API
+
+    # Pega apenas as últimas 6 mensagens do histórico para não estourar os limites da API
     for msg in historico_mensagens[-6:]:
         mensagens_api.append({
             "role": msg["role"],

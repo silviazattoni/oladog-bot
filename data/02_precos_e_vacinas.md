@@ -59,7 +59,7 @@ O OlaDog! conta com veterinário responsável para consultas de rotina e aplica�
 - **Vacina contra Giárdia:** R$ 110,00 (por dose)
 
 #### Regras para Agendamento pelo Chat:
-1. **Horários de Atendimento Veterinário:** Segunda a Sábado, das 09h às 18h (mediante agendamento prévio).
+1. **Horários de Atendimento Veterinário:** Segunda a Sábado, das 08h às 18h (mediante agendamento prévio).
 2. **Documentação:** O tutor deve trazer a carteira de vacinação física ou foto do histórico para registro do lote.
 3. **Emergências e Urgências:** O agente de IA **NÃO** faz agendamento de emergência. Caso o tutor informe que o cão apresenta sintomas graves (vômito com sangue, apatia severa, convulsão, trauma/atropelamento, falta de ar), o agente deve orientar o comparecimento imediato ao plantão do OlaDog! ou transferir a conversa para a equipe humana.
 
@@ -70,5 +70,11 @@ O OlaDog! conta com veterinário responsável para consultas de rotina e aplica�
 
 ---
 
+### Horário de Funcionamento:
+  - Segunda a Sexta: 08h às 18h
+  - Sábados: 08h às 14h
+  - **Domingos e Feriados: FECHADO.** (Não há expediente nem atendimento para banho, tosa ou loja).
+
+---
 ### 4. Formas de Pagamento
 - **Aceitamos:** PIX, Cartões de Débito e Crédito (até 3x sem juros para compras/pacotes acima de R$ 200,00) e Dinheiro.

@@ -14,10 +14,10 @@ st.set_page_config(
 
 # 2. Carrega as variáveis de ambiente
 load_dotenv()
-api_key = os.getenv("GROQ_API_KEY")
+api_key = st.secrets.get("GROQ_API_KEY") or os.getenv("GROQ_API_KEY")
 
 if not api_key:
-    st.error("❌ Chave GROQ_API_KEY não encontrada no arquivo .env!")
+    st.error("❌ Chave GROQ_API_KEY não encontrada no .env ou nos Secrets do Streamlit!")
     st.stop()
 
 client_groq = Groq(api_key=api_key)

@@ -14,10 +14,18 @@ st.set_page_config(
 
 # 2. Carrega as variáveis de ambiente
 load_dotenv()
-api_key = st.secrets.get("GROQ_API_KEY") or os.getenv("GROQ_API_KEY")
+
+# Tenta ler do .env primeiro (local), e se não achar, busca nos secrets (Streamlit Cloud)
+api_key = os.getenv("GROQ_API_KEY")
 
 if not api_key:
-    st.error("❌ Chave GROQ_API_KEY não encontrada no .env ou nos Secrets do Streamlit!")
+    try:
+        api_key = st.secrets["GROQ_API_KEY"]
+    except Exception:
+        api_key = None
+
+if not api_key:
+    st.error("❌ Chave GROQ_API_KEY não encontrada no arquivo .env nem nos Secrets!")
     st.stop()
 
 client_groq = Groq(api_key=api_key)
@@ -42,31 +50,34 @@ def carregar_base_de_conhecimento():
 
 system_instruction_toddy, conhecimento_completo = carregar_base_de_conhecimento()
 
+# Mensagem Inicial de Boas-Vindas
+mensagem_inicial = "Olá! Eu sou o Toddy, o assistente virtual do OláDog!Petshop🐾\n\nComo posso ajudar você e o seu cãozinho hoje?"
+
 # 4. BARRA LATERAL (SIDEBAR) - UX & Informações do Petshop
 with st.sidebar:
-    st.title("🐶 OláDog!")
+    st.title("🐶 OláDog!Petshop")
     st.subheader("Seu pet em boas mãos 🐾")
-    
-    st.markdown("---")
-    
-    st.markdown("### ℹ️")
-    st.write(
-        "Estou aqui para tirar dúvidas, ajudar com agendamentos e dar as melhores sugestões para o seu cãozinho com base em nossos manuais oficiais."
-    )
-    
+        
     st.markdown("---")
     
     st.markdown("### 💡 Posso te ajudar com:")
     st.markdown("""
-    * ✂️ **Banho e Tosa:** Preços, portes e modalidades.
-    * 🩺 **Consultas e Vacinas:** Informações e agendamentos.
-    * 🚗 **TaxiDog:** Regras e taxas do serviço Leva e Traz.
-    * 🧸 **Lojinha de Mimos:** Brinquedos, pelúcias e petiscos.
-    * 🚨 **Urgências:** Orientações sobre plantão veterinário.
+    * 🛁 **Banho e Tosa:** valores e modalidades.
+    * 🩺 **Consultas e Vacinas:** informações de agendamento.
+    * 🚗 **TaxiDog:** regras e taxas do serviço Leva e Traz.
+    * 🧸 **Lojinha de Mimos:** brinquedos, pelúcias e petiscos.
     """)
     
     st.markdown("---")
-    st.caption("v1.0 • Desenvolvido com LLaMA 3.1 & Streamlit")
+
+    # --- BOTÃO DE LIMPAR CONVERSA ---
+    if st.button("🗑️ Limpar Conversa", use_container_width=True):
+        st.session_state["messages"] = [
+            {"role": "assistant", "content": mensagem_inicial}
+        ]
+        st.rerun()
+
+    st.caption("v1.0 • Desenvolvido com LLaMA 3.3 & Streamlit")
 
 # 5. Função de chamada da IA com Fontes e Regras de UX
 def conversar_com_toddy(historico_mensagens):
@@ -89,11 +100,11 @@ No final da sua resposta, adicione sempre uma seção curta de fontes no seguint
 {conhecimento_completo}
 """
 
-# System prompt inicial com a base de conhecimento
+    # System prompt inicial com a base de conhecimento
     mensagens_api = [{"role": "system", "content": system_prompt_ajustado}]
 
-    # Pega apenas as últimas 2 mensagens para não estourar o limite de tokens da Groq
-    for msg in historico_mensagens[-2:]:
+    # Pega apenas as últimas 4 mensagens para manter contexto e economizar tokens
+    for msg in historico_mensagens[-4:]:
         mensagens_api.append({
             "role": msg["role"],
             "content": msg["content"]
@@ -102,37 +113,65 @@ No final da sua resposta, adicione sempre uma seção curta de fontes no seguint
     # Chamada para a API
     chat_completion = client_groq.chat.completions.create(
         messages=mensagens_api,
-        model="llama-3.3-70b-versatile",  # Modelo atualizado e oficial
+        model="llama-3.3-70b-versatile",
         temperature=0.3
     )
     
     return chat_completion.choices[0].message.content
 
-# 6. Área Principal de Chat
-
+# 6. ÁREA PRINCIPAL DE CHAT
 st.title("💬 OláDog! Chat")
 st.caption("Tire suas dúvidas em tempo real com o assistente virtual")
 
-mensagem_inicial = "Olá! Eu sou o Toddy, o assistente virtual do OláDog!Petshop 🐶🐾\n\nComo posso ajudar você e o seu cãozinho hoje? (Agendamentos, vacinas ou lojinha?)"
-
+# Inicializa o histórico apenas na primeira vez
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
         {"role": "assistant", "content": mensagem_inicial}
     ]
 
-for msg in st.session_state["messages"]:
-    if msg["role"] == "user":
-        st.chat_message("user", avatar="👤").write(msg["content"])
-    else:
-        st.chat_message("assistant", avatar="🐶").write(msg["content"])
+# Renderiza o histórico de mensagens
+for message in st.session_state["messages"]:
+    avatar_icone = "👤" if message["role"] == "user" else "🐶"
+    with st.chat_message(message["role"], avatar=avatar_icone):
+        st.markdown(message["content"])
 
-if prompt := st.chat_input("Ex.: 'Qual é o preço do banho e tosa para um cachorro de porte médio?'"):
-    st.session_state["messages"].append({"role": "user", "content": prompt})
-    st.chat_message("user", avatar="👤").write(prompt)
+# --- BOTÕES DE SUGESTÃO FIXOS ---
+st.markdown("---")
+st.write("✨ **Dúvidas frequentes (clique para perguntar):**")
 
+col1, col2 = st.columns(2)
+prompt_sugerido = None
+
+with col1:
+    if st.button("🐶 Quanto custa o banho simples?"):
+        prompt_sugerido = "Quanto custa o banho simples para um cachorro?"
+        
+    if st.button("📅 Como agendar um horário?"):
+        prompt_sugerido = "Como faço para agendar um atendimento?"
+        
+with col2:
+    if st.button("💉 Quais vacinas vocês oferecem?"):
+        prompt_sugerido = "Quais vacinas estão disponíveis?"
+        
+    if st.button("⏰ Qual o horário de funcionamento?"):
+        prompt_sugerido = "Qual o horário de funcionamento do petshop?"
+
+# --- CAMPO DE ENTRADA DO CHAT E PROCESSAMENTO ---
+user_input = st.chat_input("Ex.: 'Qual é o preço do banho para um cachorro de porte médio?'")
+prompt_final = prompt_sugerido or user_input
+
+if prompt_final:
+    # 1. Registra a pergunta do usuário
+    st.session_state["messages"].append({"role": "user", "content": prompt_final})
+    with st.chat_message("user", avatar="👤"):
+        st.markdown(prompt_final)
+
+    # 2. Gera e exibe a resposta do Toddy
     with st.chat_message("assistant", avatar="🐶"):
         with st.spinner("Toddy está verificando... 🦴"):
             resposta_toddy = conversar_com_toddy(st.session_state["messages"])
-            st.write(resposta_toddy)
+            st.markdown(resposta_toddy)
 
+    # 3. Salva a resposta no histórico e atualiza a tela
     st.session_state["messages"].append({"role": "assistant", "content": resposta_toddy})
+    st.rerun()

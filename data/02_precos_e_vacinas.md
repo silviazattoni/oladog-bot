@@ -3,7 +3,7 @@
 
 ---
 
-### 1. Tabela de Preços - Banho e Tosa
+### 1. Tabela de Preços - Banho e Tosa (TABELA FIXA)
 
 #### Porte Pequeno (P) - Até 10 kg
 - **Banho Simples:** R$ 50,00
@@ -33,48 +33,42 @@
 
 ---
 
-### 2. Adicionais de Estética
+### 2. Política de Preços e Descontos (DIRETRIZ CRÍTICA)
+- **Descontos e Negociações:** Os preços da tabela são FIXOS e NÃO negociáveis via chat.
+- **Resposta para reclamações de valor:** Se o tutor pedir desconto ou achar caro, responda APENAS: *"Entendo, mas nossos preços são calculados para garantir o melhor serviço e produtos de alta qualidade para o seu cãozinho! 🐶"*
+- **Uso dos Pacotes Mensais:** Apresente os pacotes mensais APENAS se o tutor perguntar especificamente sobre planos ou pacotes. NUNCA use o pacote mensal como barganha/desconto para contornar reclamações de preço.
+
+---
+
+### 3. Adicionais de Estética
 - **Hidratação de Pelagem:** R$ 30,00 (P/M) | R$ 45,00 (G/GG)
 - **Corte de Unhas (avulso, sem banho):** R$ 20,00 *(Já incluso em todos os banhos)*
 - **Escovação Dental (com pasta específica pet):** R$ 15,00
 
 ---
 
-### 3. Agendamento de Vacinas e Consultas Veterinárias
+### 4. Agendamento de Vacinas e Consultas Veterinárias
 
 O OlaDog! conta com veterinário responsável para consultas de rotina e aplicação de vacinas essenciais.
 
 #### Consultas Veterinárias:
-- **Consulta Veterinária de Rotina / Check-up:** R$ 140,00
-  - Avaliação geral da saúde do cão, escuta cardíaca, checagem de ouvidos, dentes e pele.
+- **Consulta Veterinária de Rotina / Check-up:** R$ 140,00 (Avaliação geral de saúde, ausculta, dentes, pele e ouvidos).
 - **Consulta de Retorno:** R$ 0,00 (Gratuito se realizado em até 15 dias após a primeira consulta).
 
 #### Vacinas Disponíveis e Valores:
 - **Vacina V10 (Polivalente):** R$ 100,00
-  - Protege contra cinomose, parvose, coronavirose, leptospirose e hepatite infecciosa.
 - **Vacina Antirrábica (Raiva):** R$ 60,00
-  - Obrigatória anualmente.
 - **Vacina de Gripe Canina (Bordetella):** R$ 90,00
-  - Indicada para cães que frequentam banho e tosa, daycare ou parques.
 - **Vacina contra Giárdia:** R$ 110,00 (por dose)
 
-#### Regras para Agendamento pelo Chat:
-1. **Horários de Atendimento Veterinário:** Segunda a Sábado, das 08h às 18h (mediante agendamento prévio).
-2. **Documentação:** O tutor deve trazer a carteira de vacinação física ou foto do histórico para registro do lote.
-3. **Emergências e Urgências:** O agente de IA **NÃO** faz agendamento de emergência. Caso o tutor informe que o cão apresenta sintomas graves (vômito com sangue, apatia severa, convulsão, trauma/atropelamento, falta de ar), o agente deve orientar o comparecimento imediato ao plantão do OlaDog! ou transferir a conversa para a equipe humana.
-
-#### Regras Importantes para Vacinação:
-1. **Avaliação prévia:** O cão passa por uma triagem física rápida antes da aplicação (inclusa no valor da vacina).
-2. **Carteira de Vacinação:** O tutor deve trazer a carteira física ou foto para registro do lote.
-3. **Restrição:** Não vacinamos cães com febre, diarreia, apatia ou em uso de antibióticos.
+#### Regras para Atendimento Veterinário e Vacinas:
+1. **Horários de Atendimento:** Segunda a Sábado, das 08h às 18h (mediante agendamento).
+2. **Documentação:** O tutor deve trazer a carteira de vacinação física ou foto.
+3. **Restrições Médicas:** Não vacinamos cães com febre, diarreia, apatia ou em uso de antibióticos.
+4. **EMERGÊNCIAS E URGÊNCIAS:** O assistente NÃO realiza agendamento de emergência. Caso o cão apresente sintomas graves (vômito com sangue, apatia severa, convulsão, trauma, falta de ar), oriente o comparecimento imediato ao plantão do OlaDog! ou transferência para a equipe humana.
 
 ---
 
-### Horário de Funcionamento:
-  - Segunda a Sexta: 08h às 18h
-  - Sábados: 08h às 14h
-  - **Domingos e Feriados: FECHADO.** (Não há expediente nem atendimento para banho, tosa ou loja).
-
----
-### 4. Formas de Pagamento
-- **Aceitamos:** PIX, Cartões de Débito e Crédito (até 3x sem juros para compras/pacotes acima de R$ 200,00) e Dinheiro.
+### 5. Horário de Funcionamento e Pagamento
+- **Funcionamento:** Segunda a Sexta (08h às 18h) | Sábados (08h às 14h) | **Domingos e Feriados: FECHADO.**
+- **Formas de Pagamento:** PIX, Débito, Crédito (até 3x sem juros para valores acima de R$ 200,00) e Dinheiro.

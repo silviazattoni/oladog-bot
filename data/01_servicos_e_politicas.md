@@ -23,7 +23,7 @@ Atendemos cães de todos os portes:
 ### 3. Serviço de TaxiDog (Leva e Traz)
 - **Como funciona:** Buscamos e levamos o cãozinho em transporte adaptado, com caixas de transporte higienizadas e individuais.
 - **Área de Cobertura:** Atendemos num raio de até 10 km da matriz do OlaDog!.
-- **Agendamento:** O TaxiDog deve ser solicitado com pelo menos 24 horas de antecedência.
+- **Regra Rígida de Agendamento:** O TaxiDog exige agendamento prévio com no mínimo **24 horas de antecedência**. Solicitações para o mesmo dia ou prazos inferiores a 24 horas NUNCA são aceitas.
 - **Taxa de Transporte:** R$ 15,00 (ida e volta) para até 5 km | R$ 25,00 (ida e volta) para 5 km a 10 km.
 
 ---
@@ -31,4 +31,5 @@ Atendemos cães de todos os portes:
 ### 4. Política de Atrasos e Cancelamentos
 - **Tolerância de Atraso:** Tolerância máxima de **15 minutos** em relação ao horário agendado.
 - **Atrasos superiores a 15 minutos:** O atendimento poderá ser adaptado apenas para "Banho Simples" (se houver tempo hábil) ou precisará ser reagendado.
-- **Cancelamentos:** Pedimos a gentileza de avisar com no mínimo 2 horas de antecedência para liberação da vaga para outro pet.
+- **Cancelamentos:** Pedimos a gentileza de avisar com no mínimo 2 horas de antecedência.
+- **Instrução de Atendimento:** Forneça regras de tolerância ou cancelamento APENAS quando o tutor perguntar especificamente sobre regras, atrasos ou políticas da casa.

@@ -1,7 +1,7 @@
-<h1 align="center">🐶 OlaDog! Petshop AI</h1>
+<h1 align="center">🐶 OláDog! Petshop AI</h1>
 
 <p align="center">
-  <strong>Assistente Virtual de Atendimento com IA Generativa, LLaMA 3.1 & Streamlit</strong>
+  <strong>Assistente Virtual de Atendimento com IA Generativa, LLaMA 3.3 & Streamlit</strong>
 </p>
 
 <p align="center">
@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Python-3.12+-blue?logo=python" alt="Python">
   <img src="https://img.shields.io/badge/Streamlit-1.x-red?logo=streamlit" alt="Streamlit">
   <img src="https://img.shields.io/badge/Groq-API-orange" alt="Groq API">
-  <img src="https://img.shields.io/badge/LLaMA-3.1%208B%20Instant-purple" alt="LLaMA 3.1">
+  <img src="https://img.shields.io/badge/LLaMA-3.3%2070B-purple" alt="LLaMA 3.3">
   <img src="https://img.shields.io/badge/UX%20Design-Conversational-green" alt="UX Conversacional">
 </p>
 
@@ -20,47 +20,50 @@
 
 ## 📖 Sobre o Projeto
 
-O **OlaDog!** é um assistente virtual inteligente (personificado pelo mascote **Toddy**) projetado para otimizar e humanizar o atendimento de um petshop.
+O **OláDog!** é um assistente virtual inteligente (personificado pelo mascote **Toddy**) projetado para otimizar e humanizar o atendimento de um petshop.
 
-A aplicação utiliza **Full Context Injection** em conjunto com o modelo **LLaMA 3.1 (8B Instant)** via **Groq Cloud API**, permitindo que o agente responda sobre agendamentos, precificação por porte, serviço de TaxiDog e produtos da lojinha com total precisão.
+A aplicação utiliza **Full Context Injection (RAG Estrito)** em conjunto com o modelo **LLaMA 3.3 (70B Versatile)** via **Groq Cloud API**, permitindo que o agente responda sobre agendamentos, precificação por peso/porte, serviço de TaxiDog e produtos da lojinha de forma objetiva e precisa.
 
 Antes de enviar qualquer resposta, o sistema consulta a base de manuais operacionais e aplica **Guardrails de UX e Segurança**, garantindo:
-- Respostas **empáticas** e **sem alucinações**;
+- Respostas **empáticas**, **diretas** e **sem alucinações**;
 - Citação automática das **fontes** consultadas no rodapé;
-- Protocolo imediato de **orientação de emergência** em casos de cães doentes/prostrados.
-
+- Protocolo imediato de **orientação de emergência** em casos de cães doentes/prostrados;
+- Direcionamento seguro para **Agenda Online** e **Loja Virtual fictícia**.
 
 ---
+
 ## 🚀 Como Funciona
 
 O fluxo da aplicação foi desenhado para ser leve, fluido e de baixíssima latência:
 
-1. O tutor envia uma dúvida pela interface do chat.
-2. O sistema carrega os manuais operacionais (`.md`) e os combina com o **System Prompt de UX**.
-3. O histórico recente de conversas é anexado para manter a memória imediata do contexto.
-4. O modelo **LLaMA 3.1 8B** processa a solicitação via **Groq API**.
-5. O Toddy responde de forma conversacional e insere a citação dos manuais consultados no rodapé.
+1. O tutor envia uma dúvida pelo campo de texto ou clica em uma das **sugestões rápidas**.
+2. O sistema carrega a base de conhecimento (`data/01_*.md` a `03_*.md`) e o **System Prompt com Guardrails (`04_system_prompt.md`)**.
+3. O histórico recente de conversas é anexado para manter a memória de contexto.
+4. O modelo **LLaMA 3.3 70B** processa a solicitação via **Groq API**.
+5. O Toddy responde de forma assertiva, cordial e insere a citação dos manuais no rodapé.
 
 ---
 
 ## ✨ Funcionalidades
 
-- 💬 Chat interativo em tempo real com avatar personalizado do Toddy
-- 🧠 Respostas orientadas aos **manuais operacionais** (sem alucinações)
+- 💬 Chat interativo em tempo real com avatar personalizado do Toddy (`🐶`)
+- 🧹 **Botão de Limpar Conversa** na barra lateral para resetar a sessão a qualquer momento
+- ⚡ **Botões de Atalho para Dúvidas Frequentes** na tela principal
+- 🧠 Respostas estritamente orientadas aos **manuais operacionais** (zero alucinações)
 - 📌 Citação automática das **fontes** dos manuais no rodapé de cada mensagem
 - 🚨 **Guardrail de segurança** para identificação de urgências veterinárias
 - 🎨 Interface amigável com barra lateral informativa (Sidebar)
-- 🔒 Proteção da API Key através de arquivo `.env` e `.gitignore`
-- 📝 Histórico de conversa fluido com memória de curto prazo
+- 🔒 Suporte a variáveis de ambiente (`.env` local e `st.secrets` no Streamlit Cloud)
 - 📱 Design responsivo para desktop e dispositivos móveis
 
 ---
 
 ## 🎯 Principais Recursos de UX
 
-- **Regra da Pergunta Única:** O agente faz apenas 1 pergunta por vez ao tutor, mantendo o tom fluido do WhatsApp.
-- **Identificação de Porte Automática:** Mapeia peso (ex: cão de 8kg) para porte correto (Pequeno) e precificação equivalente.
-- **Transparência:** O tutor sempre sabe de qual documento veio a informação prestada.
+- **Triagem de Precificação por Peso:** Exige a confirmação do peso em kg para cães antes de informar valores de banho/tosa.
+- **Respostas Assertivas e sem Redundância:** Comunicação focada, sem repetir avisos não solicitados ou frases condicionais ("seria R$ X").
+- **Links Úteis sem Venda Direta:** Redirecionamento amigável para agenda online e e-commerce fictício.
+- **Transparência:** Citação explícita das fontes de conhecimento no final da resposta.
 
 ---
 
@@ -69,9 +72,9 @@ O fluxo da aplicação foi desenhado para ser leve, fluido e de baixíssima lat�
 | Tecnologia | Utilização |
 |------------|------------|
 | Python 3.12+ | Linguagem principal |
-| Streamlit | Interface Web e gerenciamento de estado |
+| Streamlit | Interface Web e gerenciamento de estado (`session_state`) |
 | Groq Cloud API | Processamento de altíssima velocidade para LLMs |
-| LLaMA 3.1 (8B Instant) | Modelo de linguagem e raciocínio |
+| LLaMA 3.3 (70B Versatile) | Modelo de linguagem e raciocínio avançado |
 | python-dotenv | Gerenciamento de variáveis de ambiente |
 | Markdown (`.md`) | Arquitetura e modularização da base de conhecimento |
 
@@ -89,14 +92,13 @@ O fluxo da aplicação foi desenhado para ser leve, fluido e de baixíssima lat�
             System Prompt + Histórico Otimizado
                             │
                             ▼
-              Base de Conhecimento (Manuais .md)
+             Base de Conhecimento (Manuais .md)
                             │
                             ▼
-                Groq API (LLaMA 3.1 8B)
+                Groq API (LLaMA 3.3 70B)
                             │
                             ▼
              Resposta ao Usuário + Fontes (.md)
-
 
 ```
 ---
@@ -112,7 +114,6 @@ oladog-bot/
 │   └── 04_system_prompt.md
 │
 ├── .env
-├── .env.example
 ├── .gitignore
 ├── main.py
 ├── README.md
@@ -125,16 +126,11 @@ oladog-bot/
 **1. Clone o repositório**
 
 ```Bash
-git clone https://github.com/seu-usuario/oladog-bot.git
-```
-
-**2. Entre na pasta do projeto**
-
-```Bash
+git clone [https://github.com/silviazattoni/oladog-bot.git](https://github.com/silviazattoni/oladog-bot.git)
 cd oladog-bot
 ```
 
-**3. Crie e ative o ambiente virtual**
+**2. Crie e ative o ambiente virtual**
 
 **No Windows:**
 
@@ -150,22 +146,22 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-**4. Instale as dependências**
+**3. Instale as dependências**
 
 ```Bash
 pip install -r requirements.txt
 ```
 
-**5. Configure a chave da API do Groq**
+**4. Configure a chave da API do Groq**
 
-Crie um arquivo chamado .env na raiz do projeto (use o .env.example como guia) e insira sua chave:
+Crie um arquivo .env na raiz do projeto com a sua chave:
 
 ```Snippet de código
-GROQ_API_KEY=SUA_CHAVE_DA_GROQ_AQUI
+GROQ_API_KEY=sua_chave_groq_aqui
 ```
 
 
-**6. Execute a aplicação Streamlit**
+**5. Execute a aplicação Streamlit**
 
 ```Bash
 streamlit run main.py
@@ -178,19 +174,23 @@ streamlit run main.py
 
 **Pergunta:** 
 
-Olá! Quanto custa o banho para o meu Dachshund de 8kg? Vocês buscam em casa?
+Olá! Quanto custa o banho para o meu Dachshund de 7kg?
 
 ---
 
 **Resposta:** 
 
-Olá! Para o seu Dachshund de 8kg, o porte é considerado Pequeno (P). O banho com tosa completa fica R$ 95,00. 🐶✂️
+Para o seu Dachshund de 7kg, os valores são:
 
-Sim, nós temos o serviço de TaxiDog! A taxa é de R$ 15,00 para até 5 km e R$ 25,00 para distâncias entre 5 km e 10 km. É só solicitar com 24h de antecedência.
+• **Banho Simples:** R$ 50,00
 
-Qual seria o melhor dia para agendarmos o banho do seu cãozinho? 🐾
+• **Banho + Tosa Higiênica:** R$ 70,00
 
-Fonte(s): 01_servicos_e_politicas.md, 02_precos_e_vacinas.md
+• **Banho + Tosa Completa:** R$ 95,00 🐶
+
+Para agendar o melhor dia e horário para o seu cãozinho, basta acessar nossa agenda online: oladog.com.br/agendar 🐾
+
+**Fonte(s):** 02_precos_e_vacinas.md
 
 
 ---
@@ -198,10 +198,8 @@ Fonte(s): 01_servicos_e_politicas.md, 02_precos_e_vacinas.md
 ## 🔒 Segurança e Boas Práticas
 
 A chave da API do Groq não é armazenada no repositório. 
-
-Em ambiente local, as credenciais são isoladas no arquivo .env que está listado no .gitignore. 
-
-Em produção (como no Streamlit Community Cloud), utilize o recurso Secrets para proteger a API Key.
+Em ambiente local, as credenciais são isoladas no arquivo .env (ignorado via .gitignore). 
+Em produção (Streamlit Community Cloud), o projeto utiliza o gerenciamento nativo via st.secrets.
 
 ---
 ## 👩‍💻 Autora
@@ -209,9 +207,14 @@ Em produção (como no Streamlit Community Cloud), utilize o recurso Secrets par
 
 ---
 ## 📄 Licença
-Este projeto foi desenvolvido para fins educacionais e de portfólio, demonstrando a integração prática de habilidades de Inteligência Artificial, Retrieval-Augmented Generation (RAG), Python, LangChain e Streamlit.
+
+Este projeto foi desenvolvido para fins educacionais e de portfólio, demonstrando a integração prática de habilidades de Inteligência Artificial, Retrieval-Augmented Generation (RAG), Python, UX Design e Streamlit.
+
+A aplicação é uma entrega prática do **Tech AI Builder**, a segunda fase do programa **ONE AI for Tech**, que reúne formações focadas em Inteligência Artificial e Cloud — uma iniciativa realizada pela **Oracle** em parceria com a **Alura**.
 
 ---
+<div align="center">
 ⭐ Apoie o projeto deixando sua estrelinha.
 
 Desenvolvido por **Silvia Zattoni**.
+</div>

@@ -51,23 +51,63 @@ def carregar_base_de_conhecimento():
 system_instruction_toddy, conhecimento_completo = carregar_base_de_conhecimento()
 
 # Mensagem Inicial de Boas-Vindas
-mensagem_inicial = "Olá! Eu sou o Toddy, o assistente virtual do OláDog!Petshop🐾\n\nComo posso ajudar você e o seu cãozinho hoje?"
+mensagem_inicial = "Olá! Eu sou o Toddy, o assistente virtual do OláDog!Petshop 🐶🐾\n\nComo posso ajudar você e o seu cãozinho hoje?"
+
+# Variável para capturar atalhos clicados na Sidebar
+prompt_sugerido = None
 
 # 4. BARRA LATERAL (SIDEBAR) - UX & Informações do Petshop
 with st.sidebar:
+    # CSS para diminuir os espaçamentos verticais da barra lateral e remover o scroll desnecessário
+    st.markdown("""
+        <style>
+            /* Reduz padding interno do container da sidebar */
+            [data-testid="stSidebarUserContent"] {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+            /* Reduz espaçamento entre elementos verticais */
+            [data-testid="stSidebar"] .stMarkdown, 
+            [data-testid="stSidebar"] .stButton {
+                margin-bottom: -0.3rem !important;
+            }
+            /* Deixa as linhas divisoras mais discretas e finas */
+            [data-testid="stSidebar"] hr {
+                margin: 0.5rem 0 !important;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     st.title("🐶 OláDog!Petshop")
-    st.subheader("Seu pet em boas mãos 🐾")
+    st.caption("Seu pet em boas mãos 🐾")
         
     st.markdown("---")
     
-    st.markdown("### 💡 Posso te ajudar com:")
+    st.markdown("ℹ️ **Informações sobre:**")
     st.markdown("""
-    * 🛁 **Banho e Tosa:** valores e modalidades.
-    * 🩺 **Consultas e Vacinas:** informações de agendamento.
-    * 🚗 **TaxiDog:** regras e taxas do serviço Leva e Traz.
-    * 🧸 **Lojinha de Mimos:** brinquedos, pelúcias e petiscos.
+    • 🛁 Banho e Tosa  
+    • 🩺 Consultas e Vacinas  
+    • 🚗 TaxiDog  
+    • 🧸 Lojinha de Mimos
     """)
     
+    st.markdown("---")
+
+    # --- BOTÕES DE SUGESTÃO NA SIDEBAR ---
+    st.markdown("✨ **Dúvidas frequentes:**")
+    
+    if st.button("🐶 Quanto custa o banho simples?", use_container_width=True):
+        prompt_sugerido = "Quanto custa o banho simples para um cachorro?"
+        
+    if st.button("📅 Como agendar um horário?", use_container_width=True):
+        prompt_sugerido = "Como faço para agendar um atendimento?"
+        
+    if st.button("💉 Quais vacinas vocês oferecem?", use_container_width=True):
+        prompt_sugerido = "Quais vacinas estão disponíveis?"
+        
+    if st.button("⏰ Qual o horário de funcionamento?", use_container_width=True):
+        prompt_sugerido = "Qual o horário de funcionamento do petshop?"
+
     st.markdown("---")
 
     # --- BOTÃO DE LIMPAR CONVERSA ---
@@ -77,7 +117,7 @@ with st.sidebar:
         ]
         st.rerun()
 
-    st.caption("v1.0 • Desenvolvido com LLaMA 3.3 & Streamlit")
+    st.caption("v1.0 • LLaMA 3.3 & Streamlit")
 
 # 5. Função de chamada da IA com Fontes e Regras de UX
 def conversar_com_toddy(historico_mensagens):
@@ -85,10 +125,10 @@ def conversar_com_toddy(historico_mensagens):
 {system_instruction_toddy}
 
 REGRAS DE CONVERSAÇÃO E UX:
-1. SEJA CONVERSACIONAL E NATURAL: NUNCA responda criando formulários ou tópicos rígidos. Fale como uma pessoa no WhatsApp.
-2. REGRA DA PERGUNTA ÚNICA: Faça APENAS UMA pergunta por vez para o tutor. Aguarde a resposta antes de pedir a próxima informação.
+1. SEJA CONVERSACIONAL E NATURAL: Fale como uma pessoa no WhatsApp, sem tópicos rígidos ou formulários.
+2. PROIBIDO FAZER PERGUNTAS NO FINAL: Responda apenas a dúvida solicitada de forma direta e conclua. NUNCA engate perguntas abertas ao final (ex: "Gostaria de agendar?", "Qual a sua preferência?").
 3. SEM APRESENTAÇÃO REPETIDA: Não se re-apresente ("Olá, eu sou o Toddy...") se a conversa já começou.
-4. MEMÓRIA: Nunca peça informações que o tutor já deu anteriormente.
+4. MEMÓRIA DE CONTEXTO: Nunca peça informações que o tutor já forneceu na conversa.
 
 CITAGEM DE FONTES (MUITO IMPORTANTE):
 No final da sua resposta, adicione sempre uma seção curta de fontes no seguinte formato (usando os nomes exatos dos arquivos consultados no contexto):
@@ -134,27 +174,6 @@ for message in st.session_state["messages"]:
     avatar_icone = "👤" if message["role"] == "user" else "🐶"
     with st.chat_message(message["role"], avatar=avatar_icone):
         st.markdown(message["content"])
-
-# --- BOTÕES DE SUGESTÃO FIXOS ---
-st.markdown("---")
-st.write("✨ **Dúvidas frequentes (clique para perguntar):**")
-
-col1, col2 = st.columns(2)
-prompt_sugerido = None
-
-with col1:
-    if st.button("🐶 Quanto custa o banho simples?"):
-        prompt_sugerido = "Quanto custa o banho simples para um cachorro?"
-        
-    if st.button("📅 Como agendar um horário?"):
-        prompt_sugerido = "Como faço para agendar um atendimento?"
-        
-with col2:
-    if st.button("💉 Quais vacinas vocês oferecem?"):
-        prompt_sugerido = "Quais vacinas estão disponíveis?"
-        
-    if st.button("⏰ Qual o horário de funcionamento?"):
-        prompt_sugerido = "Qual o horário de funcionamento do petshop?"
 
 # --- CAMPO DE ENTRADA DO CHAT E PROCESSAMENTO ---
 user_input = st.chat_input("Ex.: 'Qual é o preço do banho para um cachorro de porte médio?'")

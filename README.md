@@ -17,6 +17,19 @@
 </p>
 
 ---
+🐶 **Aplicação online:** [Acesse o Assistente OláDog!](https://oladog-bot.streamlit.app/)
+
+▶️ **Vídeo demonstração:** [Assista ao vídeo demonstrativo](https://drive.google.com/file/d/1sfs_iaAR2z2NphM41IgE6qp_RTTShzOK/view?usp=drive_link)
+ 
+<br>
+
+## 📸 Demonstração da Interface
+
+<p align="center">
+  <img src="img/demonstracao.gif" alt="GIF do Chat em Funcionamento" width="700">
+</p>
+<br>
+
 
 ## 📖 Sobre o Projeto
 
@@ -30,6 +43,9 @@ Antes de enviar qualquer resposta, o sistema consulta a base de manuais operacio
 - Protocolo imediato de **orientação de emergência** em casos de cães doentes/prostrados;
 - Direcionamento seguro para **Agenda Online** e **Loja Virtual fictícia**.
 
+<br>
+
+
 ---
 
 ## 🚀 Como Funciona
@@ -42,19 +58,23 @@ O fluxo da aplicação foi desenhado para ser leve, fluido e de baixíssima lat�
 4. O modelo **LLaMA 3.3 70B** processa a solicitação via **Groq API**.
 5. O Toddy responde de forma assertiva, cordial e insere a citação dos manuais no rodapé.
 
+<br>
+
 ---
 
 ## ✨ Funcionalidades
 
 - 💬 Chat interativo em tempo real com avatar personalizado do Toddy (`🐶`)
 - 🧹 **Botão de Limpar Conversa** na barra lateral para resetar a sessão a qualquer momento
-- ⚡ **Botões de Atalho para Dúvidas Frequentes** na tela principal
+- ⚡ **Botões de Atalho para Dúvidas Frequentes** na barra lateral
 - 🧠 Respostas estritamente orientadas aos **manuais operacionais** (zero alucinações)
 - 📌 Citação automática das **fontes** dos manuais no rodapé de cada mensagem
 - 🚨 **Guardrail de segurança** para identificação de urgências veterinárias
 - 🎨 Interface amigável com barra lateral informativa (Sidebar)
 - 🔒 Suporte a variáveis de ambiente (`.env` local e `st.secrets` no Streamlit Cloud)
 - 📱 Design responsivo para desktop e dispositivos móveis
+
+<br>
 
 ---
 
@@ -64,6 +84,8 @@ O fluxo da aplicação foi desenhado para ser leve, fluido e de baixíssima lat�
 - **Respostas Assertivas e sem Redundância:** Comunicação focada, sem repetir avisos não solicitados ou frases condicionais ("seria R$ X").
 - **Links Úteis sem Venda Direta:** Redirecionamento amigável para agenda online e e-commerce fictício.
 - **Transparência:** Citação explícita das fontes de conhecimento no final da resposta.
+
+<br>
 
 ---
 
@@ -77,6 +99,8 @@ O fluxo da aplicação foi desenhado para ser leve, fluido e de baixíssima lat�
 | LLaMA 3.3 (70B Versatile) | Modelo de linguagem e raciocínio avançado |
 | python-dotenv | Gerenciamento de variáveis de ambiente |
 | Markdown (`.md`) | Arquitetura e modularização da base de conhecimento |
+
+<br>
 
 ---
 
@@ -101,6 +125,9 @@ O fluxo da aplicação foi desenhado para ser leve, fluido e de baixíssima lat�
              Resposta ao Usuário + Fontes (.md)
 
 ```
+
+<br>
+
 ---
 ## 📁 Estrutura do Projeto
 
@@ -120,6 +147,9 @@ oladog-bot/
 └── requirements.txt
 
 ```
+
+<br>
+
 ---
 ## ⚙️ Como Executar Localmente
 
@@ -129,6 +159,9 @@ oladog-bot/
 git clone [https://github.com/silviazattoni/oladog-bot.git](https://github.com/silviazattoni/oladog-bot.git)
 cd oladog-bot
 ```
+
+<br>
+
 
 **2. Crie e ative o ambiente virtual**
 
@@ -146,11 +179,15 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
+<br>
+
 **3. Instale as dependências**
 
 ```Bash
 pip install -r requirements.txt
 ```
+
+<br>
 
 **4. Configure a chave da API do Groq**
 
@@ -160,12 +197,16 @@ Crie um arquivo .env na raiz do projeto com a sua chave:
 GROQ_API_KEY=sua_chave_groq_aqui
 ```
 
+<br>
+
 
 **5. Execute a aplicação Streamlit**
 
 ```Bash
 streamlit run main.py
 ```
+
+<br>
 
 
 ---
@@ -175,6 +216,9 @@ streamlit run main.py
 **Pergunta:** 
 
 Olá! Quanto custa o banho para o meu Dachshund de 7kg?
+
+<br>
+
 
 ---
 
@@ -193,6 +237,9 @@ Para agendar o melhor dia e horário para o seu cãozinho, basta acessar nossa a
 **Fonte(s):** 02_precos_e_vacinas.md
 
 
+<br>
+
+
 ---
 
 ## 🔒 Segurança e Boas Práticas
@@ -201,9 +248,11 @@ A chave da API do Groq não é armazenada no repositório.
 Em ambiente local, as credenciais são isoladas no arquivo .env (ignorado via .gitignore). 
 Em produção (Streamlit Community Cloud), o projeto utiliza o gerenciamento nativo via st.secrets.
 
+<br>
+
 ---
 ## 👩‍💻 Autora
-### Silvia Zattoni
+**Silvia Zattoni**
 
 ---
 ## 📄 Licença
@@ -211,6 +260,9 @@ Em produção (Streamlit Community Cloud), o projeto utiliza o gerenciamento nat
 Este projeto foi desenvolvido para fins educacionais e de portfólio, demonstrando a integração prática de habilidades de Inteligência Artificial, Retrieval-Augmented Generation (RAG), Python, UX Design e Streamlit.
 
 A aplicação é uma entrega prática do **Tech AI Builder**, a segunda fase do programa **ONE AI for Tech**, que reúne formações focadas em Inteligência Artificial e Cloud — uma iniciativa realizada pela **Oracle** em parceria com a **Alura**.
+
+<br>
+
 
 ---
 <div align="center">
